@@ -13,9 +13,6 @@ https://docs.djangoproject.com/en/4.2/ref/settings/
 from pathlib import Path
 import os
 
-from dotenv import load_dotenv
-load_dotenv()
-
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
 
@@ -24,7 +21,7 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 # See https://docs.djangoproject.com/en/4.2/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = os.environ.get('SECRET_KEY')
+SECRET_KEY = "django-insecure-@d0p&0%gz$4$(yy9z%to((d3ct6_hqgy1ir!koafc&5g!&b76l"
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
@@ -85,13 +82,9 @@ WSGI_APPLICATION = "onlyflans.wsgi.application"
 # https://docs.djangoproject.com/en/4.2/ref/settings/#databases
 
 DATABASES = {
-    'default': {
-        'ENGINE': 'django.db.backends.postgresql',
-        'NAME': os.environ.get('DATABASE_NAME'),
-        'USER': os.environ.get('DATABASE_USER'),
-        'PASSWORD': os.environ.get('DATABASE_PASSWORD'),
-        'HOST': '127.0.0.1',
-        'PORT': '5432',
+    "default": {
+        "ENGINE": "django.db.backends.sqlite3",
+        "NAME": BASE_DIR / "db.sqlite3",
     }
 }
 
