@@ -1,0 +1,51 @@
+{% load static %}
+
+
+<nav class="navbar navbar-expand-lg bg-primary-subtle"  style="width: 100%;">
+    <div class="container-fluid">
+        <a href="{% url 'index' %}"><img src="{% static 'img/OnlyFlans.png' %}" class="d-block img-fluid" alt="..."></a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            <ul class="navbar-nav me-0 mb-2 mb-lg-0">
+                <li class="nav-item text-center">
+                    <a class="nav-link active text-end" aria-current="page" href="{% url 'index' %}"></a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="{% url 'about' %}">Acerca de</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="{% url 'welcome' %}">Tus Flanes</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="{% url 'contact_form' %}">Contacto</a>
+                </li>
+            </ul>
+                <!--buscador-->
+            <form class="d-flex ms-auto me-0" role="search" action="{% url 'filtro' %}" method="GET">
+                <input class="form-control me-2" type="search" placeholder="Buscar" aria-label="Search" name="papita">
+                <button class="btn btn-outline-primary" type="submit">Buscar</button>
+            </form>
+                <!---LOGIN-->
+            <ul class="navbar-nav ml-auto">
+                {% if user.is_authenticated %}
+                <li class="nav-item text-end">
+                    <div class="d-flex">
+                        <a class="nav-link d-inline" href="{% url 'logout' %}">Cerrar sesión</a>
+                        <p class="btn btn-outline-dark">bienvenido {{ user.username }}</p>
+                    </div>
+                </li>
+                {% else %}
+                <li class="nav-item">
+                    <a class="nav-link fw-medium" href="{% url 'login' %}">Iniciar sesión</a>
+                </li>
+                {% endif %}
+            </ul>
+            <!---LOGIN-->
+            </ul>
+        </div>
+    </div>
+</nav>
